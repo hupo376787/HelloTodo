@@ -1,0 +1,3 @@
+Status: BLOCKED, not passed.
+Chromium Playwright navigation: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8787/
+The environment's managed Chromium URL policy blocks navigation. No UI screenshot or E2E success is claimed.

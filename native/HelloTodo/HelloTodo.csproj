@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.2.3" />
+    <PackageReference Include="Avalonia.Controls.ColorPicker" Version="11.2.3" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.3" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../web/microsoft-config.json" LogicalName="HelloTodo.MicrosoftConfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../web/account-config.json" LogicalName="HelloTodo.AccountConfig.json" />
+  </ItemGroup>
+</Project>

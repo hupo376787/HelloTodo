@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+  <ApplicationIcon>../HelloTodo/Assets/app.ico</ApplicationIcon>
+  <OutputType>WinExe</OutputType>
+  <TargetFramework>net8.0</TargetFramework>
+  <RuntimeIdentifiers>win-x64;win-arm64;osx-x64;osx-arm64;linux-x64;linux-arm64</RuntimeIdentifiers>
+  <Nullable>enable</Nullable>
+  <ImplicitUsings>enable</ImplicitUsings>
+ </PropertyGroup>
+ <ItemGroup><ProjectReference Include="../HelloTodo/HelloTodo.csproj"/><PackageReference Include="Avalonia.Desktop" Version="11.2.3"/><PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.3"/></ItemGroup>
+ <ItemGroup><PackageReference Include="Microsoft.Identity.Client" Version="4.67.2" /></ItemGroup>
+</Project>

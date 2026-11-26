@@ -1,0 +1,21 @@
+name = "hellotodo"
+main = "server/worker.mjs"
+compatibility_date = "2026-10-01"
+[assets]
+directory = "./web"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+[[d1_databases]]
+binding = "DB"
+database_name = "hellotodo"
+database_id = "REPLACE_WITH_D1_ID"
+migrations_dir = "server/migrations"
+# Optional: requires enabling R2 in the account.
+# [[r2_buckets]]
+# binding = "FILES"
+# bucket_name = "hellotodo-files"
+
+[vars]
+ACCOUNTS_ENABLED = "true"
+# Set to the deployed HTTPS origin before enabling social providers.
+# AUTH_PUBLIC_URL = "https://todo.example.com"

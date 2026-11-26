@@ -1,0 +1,132 @@
+
+> test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: attachment false avoids request, true 401 retains task and persistent diagnostics; next import fills missing attachment
+ok 1 - attachment false avoids request, true 401 retains task and persistent diagnostics; next import fills missing attachment
+  ---
+  duration_ms: 38.209001
+  type: 'test'
+  ...
+# Subtest: download failure isolates one file; metadata contentBytes fallback; repair missing local blob
+ok 2 - download failure isolates one file; metadata contentBytes fallback; repair missing local blob
+  ---
+  duration_ms: 8.875194
+  type: 'test'
+  ...
+# Subtest: attachment flag true but empty list is not successful; mismatched file length rejected
+ok 3 - attachment flag true but empty list is not successful; mismatched file length rejected
+  ---
+  duration_ms: 3.166066
+  type: 'test'
+  ...
+# Subtest: Graph 401 parses response code and request id without exposing bearer
+ok 4 - Graph 401 parses response code and request id without exposing bearer
+  ---
+  duration_ms: 1.13802
+  type: 'test'
+  ...
+# Subtest: optional expanded task fallback can enumerate attachments after list 401
+ok 5 - optional expanded task fallback can enumerate attachments after list 401
+  ---
+  duration_ms: 6.622868
+  type: 'test'
+  ...
+# Subtest: publisher-owned Microsoft configuration, no user Client ID required
+ok 6 - publisher-owned Microsoft configuration, no user Client ID required
+  ---
+  duration_ms: 25.738341
+  type: 'test'
+  ...
+# Subtest: Microsoft login PKCE state check, cancellation, token exchange only with Microsoft
+ok 7 - Microsoft login PKCE state check, cancellation, token exchange only with Microsoft
+  ---
+  duration_ms: 5.421285
+  type: 'test'
+  ...
+# Subtest: smart lists, My Day date reset, completion and search
+ok 8 - smart lists, My Day date reset, completion and search
+  ---
+  duration_ms: 4.148378
+  type: 'test'
+  ...
+# Subtest: recurrence clamps month and resets steps, idempotent successor
+ok 9 - recurrence clamps month and resets steps, idempotent successor
+  ---
+  duration_ms: 0.564408
+  type: 'test'
+  ...
+# Subtest: list/group, cascade delete, CSV quoting and formula protection
+ok 10 - list/group, cascade delete, CSV quoting and formula protection
+  ---
+  duration_ms: 0.609154
+  type: 'test'
+  ...
+# Subtest: pending edits survive remote refresh
+ok 11 - pending edits survive remote refresh
+  ---
+  duration_ms: 1.009131
+  type: 'test'
+  ...
+# Subtest: Microsoft Graph date zone conversion and paging
+ok 12 - Microsoft Graph date zone conversion and paging
+  ---
+  duration_ms: 37.005224
+  type: 'test'
+  ...
+# Subtest: Graph import mock with completed history, checklist, attachments, raw metadata and repeat import
+ok 13 - Graph import mock with completed history, checklist, attachments, raw metadata and repeat import
+  ---
+  duration_ms: 20.694334
+  type: 'test'
+  ...
+# Subtest: real local HTTP server, static assets, persistent attachment and task after restart
+ok 14 - real local HTTP server, static assets, persistent attachment and task after restart
+  ---
+  duration_ms: 378.446477
+  type: 'test'
+  ...
+# (node:3655) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: server auth, user isolation, invalid payload
+ok 15 - server auth, user isolation, invalid payload
+  ---
+  duration_ms: 23.072198
+  type: 'test'
+  ...
+# Subtest: two offline devices merge different fields; retry idempotence; deletion wins
+ok 16 - two offline devices merge different fields; retry idempotence; deletion wins
+  ---
+  duration_ms: 22.150636
+  type: 'test'
+  ...
+# Subtest: delta pagination and retry retains pending queue
+ok 17 - delta pagination and retry retains pending queue
+  ---
+  duration_ms: 62.1129
+  type: 'test'
+  ...
+# Subtest: attachment data round trip and isolation
+ok 18 - attachment data round trip and isolation
+  ---
+  duration_ms: 4.04789
+  type: 'test'
+  ...
+# (node:3656) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: static assets resolve on Windows and POSIX; reject directory traversal
+ok 19 - static assets resolve on Windows and POSIX; reject directory traversal
+  ---
+  duration_ms: 1.147484
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 532.916856

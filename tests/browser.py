@@ -1,0 +1,25 @@
+import os, subprocess, tempfile, time, urllib.request, json
+from playwright.sync_api import sync_playwright
+from pathlib import Path
+root=Path(__file__).resolve().parents[1]
+key='A'*43
+with tempfile.TemporaryDirectory() as tmp:
+    env={**os.environ,'HELLOTODO_KEY':key,'HELLOTODO_DB':tmp+'/test.sqlite','HELLOTODO_FILES':tmp+'/files','PORT':'8787'}
+    server=subprocess.Popen(['node','server/local.mjs'],cwd=root,env=env,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    try:
+        for _ in range(50):
+            try: urllib.request.urlopen('http://127.0.0.1:8787/api/health'); break
+            except Exception: time.sleep(.1)
+        with sync_playwright() as p:
+            browser=p.chromium.launch(executable_path='/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else None,args=['--no-sandbox'],headless=True)
+            a=browser.new_context(viewport={'width':1280,'height':800},accept_downloads=True);page=a.new_page();errors=[];page.on('pageerror',lambda e: errors.append(str(e)));page.on('dialog',lambda d:d.accept());page.goto('http://127.0.0.1:8787');page.get_by_role('button',name='暂不登录，使用本地模式').click();page.get_by_text('新建清单',exact=False).wait_for();page.locator('#newTask').fill('测试任务');page.locator('#newTask').press('Enter');page.get_by_role('button',name='测试任务',exact=True).click();page.get_by_placeholder('＋ 添加步骤').fill('检查数据');page.get_by_placeholder('＋ 添加步骤').press('Enter');page.get_by_role('checkbox',name='完成步骤 检查数据').check();page.get_by_placeholder('添加备注').fill('备注内容');page.get_by_placeholder('添加备注').press('Tab');page.get_by_label('截止日期',exact=True).fill('2027-03-01');page.get_by_label('截止日期',exact=True).press('Tab');page.locator('#detail').get_by_label('切换重要').click();page.locator('#detail').get_by_label('返回任务列表').click();page.locator('#sidebar .navrow').nth(1).click();assert page.get_by_role('button',name='测试任务',exact=True).is_visible();page.get_by_text('新建清单',exact=False).click();page.get_by_placeholder('清单名称').fill('工作');page.get_by_role('button',name='保存',exact=True).click();page.locator('#newTask').fill('清单任务');page.locator('#newTask').press('Enter');page.reload();page.get_by_role('button',name='工作',exact=False).click();assert page.get_by_role('button',name='清单任务',exact=True).is_visible();page.locator('#settings').click();page.get_by_placeholder('工作区密钥').fill(key);page.get_by_role('button',name='连接工作区').click();page.wait_for_function("document.querySelector('#status').textContent.includes('已同步')",timeout=15000);
+            b=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,device_scale_factor=1,has_touch=True);phone=b.new_page();phone.on('pageerror',lambda e:errors.append(str(e)));phone.on('dialog',lambda d:d.accept());phone.goto('http://127.0.0.1:8787');phone.get_by_role('button',name='暂不登录，使用本地模式').click();phone.locator('#settings').click();phone.get_by_placeholder('工作区密钥').fill(key);phone.get_by_role('button',name='连接工作区').click();phone.wait_for_function("document.querySelector('#status').textContent.includes('已同步')",timeout=15000);phone.get_by_role('button',name='测试任务',exact=True).wait_for();phone.get_by_role('button',name='完成任务',exact=True).click();phone.wait_for_function("document.querySelector('#status').textContent.includes('已同步')",timeout=15000);page.locator('#sync').click();page.wait_for_function("document.querySelector('#status').textContent.includes('已同步')",timeout=15000);page.get_by_role('button',name='标记未完成',exact=True).wait_for();
+            # Offline app shell and persisted queue; verify actual offline reload.
+            phone.wait_for_function('navigator.serviceWorker.controller !== null',timeout=15000);b.set_offline(True);phone.reload();phone.locator('#newTask').fill('离线创建');phone.locator('#newTask').press('Enter');phone.get_by_role('button',name='离线创建',exact=True).wait_for();b.set_offline(False);phone.wait_for_function("document.querySelector('#status').textContent.includes('已同步')",timeout=15000);page.locator('#sync').click();page.get_by_role('button',name='离线创建',exact=True).wait_for(timeout=15000);
+            # Settings, CSV export, dark mode and actual responsive screenshot.
+            page.locator('#settings').click();page.get_by_label('主题',exact=True).select_option('dark');assert page.locator('html').evaluate("e=>e.classList.contains('dark')");with_download=page.expect_download();
+            with with_download as dl: page.get_by_role('button',name='导出 Excel 可打开的 CSV').click()
+            assert 'HelloTodo.csv'==dl.value.suggested_filename;page.get_by_label('主题',exact=True).select_option('light');page.get_by_role('button',name='关闭',exact=True).click();page.get_by_role('button',name='离线创建',exact=True).click();page.screenshot(path=str(root/'tests'/'desktop.png'));phone.screenshot(path=str(root/'tests'/'mobile.png'));assert not errors,errors
+            browser.close();print('PASS: Chromium desktop/mobile, CRUD, details, list, persistence, two devices, offline reload, reconnect, CSV, theme; no page errors')
+    finally:
+        server.terminate();server.wait(timeout=5)

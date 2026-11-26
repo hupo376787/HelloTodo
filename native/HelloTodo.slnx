@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="HelloTodo/HelloTodo.csproj" />
+  <Project Path="HelloTodo.Desktop/HelloTodo.Desktop.csproj" />
+  <Project Path="HelloTodo.Android/HelloTodo.Android.csproj" />
+  <Project Path="HelloTodo.iOS/HelloTodo.iOS.csproj" />
+</Solution>

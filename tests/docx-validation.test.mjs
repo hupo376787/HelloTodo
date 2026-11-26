@@ -1,0 +1,14 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {deflateRawSync} from 'node:zlib';
+import {isDocxAttachment,validateDocxAttachment,validateOutlookAttachment} from '../web/file-validation.mjs';
+import {recoverOutlookBatch} from '../web/outlook-batch.mjs';
+const mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+const parts={'[Content_Types].xml':'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"/>','_rels/.rels':'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"/>','word/document.xml':'<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body/></w:document>'};
+function crc(b){let c=0xffffffff;for(const x of b){c^=x;for(let j=0;j<8;j++)c=(c&1)?(c>>>1)^0xedb88320:c>>>1;}return (c^0xffffffff)>>>0;}
+function zip(entries=parts,{method=8,wrongCrc=false}={}){const local=[],central=[];let off=0;for(const [name,value] of Object.entries(entries)){const n=Buffer.from(name),data=Buffer.from(value),z=method===8?deflateRawSync(data):data,c=crc(data)^(wrongCrc?1:0),l=Buffer.alloc(30),h=Buffer.alloc(46);l.writeUInt32LE(0x04034b50);l.writeUInt16LE(20,4);l.writeUInt16LE(method,8);l.writeUInt32LE(c>>>0,14);l.writeUInt32LE(z.length,18);l.writeUInt32LE(data.length,22);l.writeUInt16LE(n.length,26);h.writeUInt32LE(0x02014b50);h.writeUInt16LE(20,4);h.writeUInt16LE(20,6);h.writeUInt16LE(method,10);h.writeUInt32LE(c>>>0,16);h.writeUInt32LE(z.length,20);h.writeUInt32LE(data.length,24);h.writeUInt16LE(n.length,28);h.writeUInt32LE(off,42);local.push(l,n,z);central.push(h,n);off+=l.length+n.length+z.length;}const c=Buffer.concat(central),end=Buffer.alloc(22);end.writeUInt32LE(0x06054b50);end.writeUInt16LE(Object.keys(entries).length,8);end.writeUInt16LE(Object.keys(entries).length,10);end.writeUInt32LE(c.length,12);end.writeUInt32LE(off,16);return Buffer.concat([...local,c,end]);}
+const blob=b=>new Blob([b],{type:mime});
+test('DOCX validation supports MIME or filename and CRC-checks all stored and deflated entries',async()=>{assert.equal(isDocxAttachment('application/octet-stream','测试.DOCX'),true);for(const method of [0,8]){const v=await validateOutlookAttachment(blob(zip(parts,{method})),{type:'application/octet-stream',name:'测试.docx'});assert.equal(v.ok,true,v.reason);assert.equal(v.entries,3);assert.equal(v.kind,'docx-package');}});
+test('DOCX rejects invalid CRC even when local and central metadata agree',async()=>{const v=await validateDocxAttachment(blob(zip(parts,{wrongCrc:true})));assert.equal(v.ok,false);assert.match(v.reason,/CRC/);});
+test('DOCX rejects truncated ZIP, HTML, and ZIP lacking a Word document part',async()=>{for(const b of [zip().subarray(0,-3),Buffer.from('<html>not a document</html>'),zip({'test.txt':'text'})]){assert.equal((await validateDocxAttachment(blob(b))).ok,false);}});
+// Format validation helpers are retained for compatibility; migration no longer calls them.

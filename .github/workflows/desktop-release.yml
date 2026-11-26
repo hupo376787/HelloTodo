@@ -1,0 +1,36 @@
+name: Desktop packages
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: windows-latest, rid: win-x64}
+          - {os: windows-latest, rid: win-arm64}
+          - {os: macos-latest, rid: osx-x64}
+          - {os: macos-latest, rid: osx-arm64}
+          - {os: ubuntu-latest, rid: linux-x64}
+          - {os: ubuntu-latest, rid: linux-arm64}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python tools/package-desktop.py --rid ${{ matrix.rid }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HelloTodo-${{ matrix.rid }}
+          path: |
+            artifacts/desktop/*.zip
+            artifacts/desktop/*.tar.gz
+          if-no-files-found: error

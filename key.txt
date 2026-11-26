@@ -1,0 +1,2 @@
+CLIENT KEY (save privately, do not commit): AujDnScG-gCmbkKUhVtsFUyVaR4_eDb8TeKaoKOhyxw
+WORKSPACE_KEYS secret (SHA-256): ef7a7cdbf45d0baa0fa3cb4397ea037348dafeb95c083bd440ee9b19679bb88d

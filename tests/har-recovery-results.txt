@@ -1,0 +1,228 @@
+
+> test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: attachment false avoids request, true 401 retains task and persistent diagnostics; next import fills missing attachment
+ok 1 - attachment false avoids request, true 401 retains task and persistent diagnostics; next import fills missing attachment
+  ---
+  duration_ms: 30.243485
+  type: 'test'
+  ...
+# Subtest: download failure isolates one file; metadata contentBytes fallback; repair missing local blob
+ok 2 - download failure isolates one file; metadata contentBytes fallback; repair missing local blob
+  ---
+  duration_ms: 6.211241
+  type: 'test'
+  ...
+# Subtest: attachment flag true but empty list is not successful; mismatched file length rejected
+ok 3 - attachment flag true but empty list is not successful; mismatched file length rejected
+  ---
+  duration_ms: 2.255961
+  type: 'test'
+  ...
+# Subtest: Graph 401 parses response code and request id without exposing bearer
+ok 4 - Graph 401 parses response code and request id without exposing bearer
+  ---
+  duration_ms: 0.821764
+  type: 'test'
+  ...
+# Subtest: optional expanded task fallback can enumerate attachments after list 401
+ok 5 - optional expanded task fallback can enumerate attachments after list 401
+  ---
+  duration_ms: 3.918856
+  type: 'test'
+  ...
+# Subtest: paperclip uses actual file or original source flag; no icon for unrelated and deleted files; pending syncs via task data
+ok 6 - paperclip uses actual file or original source flag; no icon for unrelated and deleted files; pending syncs via task data
+  ---
+  duration_ms: 4.23942
+  type: 'test'
+  ...
+# Subtest: Outlook bundle matches original title and timestamp, recovers missing file, is idempotent and preserves task edits
+ok 7 - Outlook bundle matches original title and timestamp, recovers missing file, is idempotent and preserves task edits
+  ---
+  duration_ms: 8.484267
+  type: 'test'
+  ...
+# Subtest: 401 on attachment list remains pending across device sync; retry with empty list does not falsely mark complete; successful retry restores file
+ok 8 - 401 on attachment list remains pending across device sync; retry with empty list does not falsely mark complete; successful retry restores file
+  ---
+  duration_ms: 26.148448
+  type: 'test'
+  ...
+# Subtest: Graph retry recognizes identical recovered Outlook file rather than creating a duplicate
+ok 9 - Graph retry recognizes identical recovered Outlook file rather than creating a duplicate
+  ---
+  duration_ms: 5.640849
+  type: 'test'
+  ...
+# Subtest: web row integrates SVG paperclip and pending marker
+ok 10 - web row integrates SVG paperclip and pending marker
+  ---
+  duration_ms: 1.154375
+  type: 'test'
+  ...
+# Subtest: publisher-owned Microsoft configuration, no user Client ID required
+ok 11 - publisher-owned Microsoft configuration, no user Client ID required
+  ---
+  duration_ms: 30.804668
+  type: 'test'
+  ...
+# Subtest: Microsoft login PKCE state check, cancellation, token exchange only with Microsoft
+ok 12 - Microsoft login PKCE state check, cancellation, token exchange only with Microsoft
+  ---
+  duration_ms: 4.95774
+  type: 'test'
+  ...
+# Subtest: smart lists, My Day date reset, completion and search
+ok 13 - smart lists, My Day date reset, completion and search
+  ---
+  duration_ms: 3.178864
+  type: 'test'
+  ...
+# Subtest: recurrence clamps month and resets steps, idempotent successor
+ok 14 - recurrence clamps month and resets steps, idempotent successor
+  ---
+  duration_ms: 0.56867
+  type: 'test'
+  ...
+# Subtest: list/group, cascade delete, CSV quoting and formula protection
+ok 15 - list/group, cascade delete, CSV quoting and formula protection
+  ---
+  duration_ms: 0.544675
+  type: 'test'
+  ...
+# Subtest: pending edits survive remote refresh
+ok 16 - pending edits survive remote refresh
+  ---
+  duration_ms: 0.782415
+  type: 'test'
+  ...
+# Subtest: Microsoft Graph date zone conversion and paging
+ok 17 - Microsoft Graph date zone conversion and paging
+  ---
+  duration_ms: 33.765866
+  type: 'test'
+  ...
+# Subtest: Graph import mock with completed history, checklist, attachments, raw metadata and repeat import
+ok 18 - Graph import mock with completed history, checklist, attachments, raw metadata and repeat import
+  ---
+  duration_ms: 11.753724
+  type: 'test'
+  ...
+# Subtest: HAR parses plain and base64 task pages only, dedupes, excludes auth and private body
+ok 19 - HAR parses plain and base64 task pages only, dedupes, excludes auth and private body
+  ---
+  duration_ms: 2.246267
+  type: 'test'
+  ...
+# Subtest: exact original ID only, preserves user edits, metadata does not create attachment records
+ok 20 - exact original ID only, preserves user edits, metadata does not create attachment records
+  ---
+  duration_ms: 2.272164
+  type: 'test'
+  ...
+# Subtest: batch restore validates size and type, persists original bytes, clears pending and dedupes
+ok 21 - batch restore validates size and type, persists original bytes, clears pending and dedupes
+  ---
+  duration_ms: 7.589486
+  type: 'test'
+  ...
+# Subtest: same name and size ambiguity requires explicit selection; one file cannot map to multiple tasks
+ok 22 - same name and size ambiguity requires explicit selection; one file cannot map to multiple tasks
+  ---
+  duration_ms: 0.80602
+  type: 'test'
+  ...
+# Subtest: partial recovery remains pending and duplicate file selections are rejected
+ok 23 - partial recovery remains pending and duplicate file selections are rejected
+  ---
+  duration_ms: 1.536809
+  type: 'test'
+  ...
+# Subtest: Outlook preview uses fixed official host and encoded IDs, rejects URL injection
+ok 24 - Outlook preview uses fixed official host and encoded IDs, rejects URL injection
+  ---
+  duration_ms: 0.250911
+  type: 'test'
+  ...
+# Subtest: real local HTTP server, static assets, persistent attachment and task after restart
+ok 25 - real local HTTP server, static assets, persistent attachment and task after restart
+  ---
+  duration_ms: 252.970371
+  type: 'test'
+  ...
+# Subtest: 100 tasks saved before subresource fetching; bounded concurrency and batched saves
+ok 26 - 100 tasks saved before subresource fetching; bounded concurrency and batched saves
+  ---
+  duration_ms: 140.27645
+  type: 'test'
+  ...
+# Subtest: attachment retry only processes pending task; optional beta endpoint reads missing file
+ok 27 - attachment retry only processes pending task; optional beta endpoint reads missing file
+  ---
+  duration_ms: 5.249071
+  type: 'test'
+  ...
+# Subtest: Retry-After honors seconds including zero, sorting is per list and opacity clamped
+ok 28 - Retry-After honors seconds including zero, sorting is per list and opacity clamped
+  ---
+  duration_ms: 0.54904
+  type: 'test'
+  ...
+# (node:3555) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: server auth, user isolation, invalid payload
+ok 29 - server auth, user isolation, invalid payload
+  ---
+  duration_ms: 15.236427
+  type: 'test'
+  ...
+# Subtest: two offline devices merge different fields; retry idempotence; deletion wins
+ok 30 - two offline devices merge different fields; retry idempotence; deletion wins
+  ---
+  duration_ms: 19.614952
+  type: 'test'
+  ...
+# Subtest: delta pagination and retry retains pending queue
+ok 31 - delta pagination and retry retains pending queue
+  ---
+  duration_ms: 52.334602
+  type: 'test'
+  ...
+# Subtest: attachment data round trip and isolation
+ok 32 - attachment data round trip and isolation
+  ---
+  duration_ms: 3.711735
+  type: 'test'
+  ...
+# Subtest: custom list appearance and image sync across two devices
+ok 33 - custom list appearance and image sync across two devices
+  ---
+  duration_ms: 13.522297
+  type: 'test'
+  ...
+# Subtest: attachment migration status survives actual worker push/pull and completion clears stale local status
+ok 34 - attachment migration status survives actual worker push/pull and completion clears stale local status
+  ---
+  duration_ms: 3.538665
+  type: 'test'
+  ...
+# (node:3577) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: static assets resolve on Windows and POSIX; reject directory traversal
+ok 35 - static assets resolve on Windows and POSIX; reject directory traversal
+  ---
+  duration_ms: 1.190277
+  type: 'test'
+  ...
+1..35
+# tests 35
+# suites 0
+# pass 35
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 448.674587

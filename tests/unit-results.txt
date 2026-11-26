@@ -1,0 +1,608 @@
+
+> test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: Monet palette has unique named and safe background/accent values
+ok 1 - Monet palette has unique named and safe background/accent values
+  ---
+  duration_ms: 1.765451
+  type: 'test'
+  ...
+# Subtest: global accent maintains readable toolbar and primary buttons in light and dark modes
+ok 2 - global accent maintains readable toolbar and primary buttons in light and dark modes
+  ---
+  duration_ms: 13.91099
+  type: 'test'
+  ...
+# Subtest: default blue stays backwards compatible and custom theme changes default background
+ok 3 - default blue stays backwards compatible and custom theme changes default background
+  ---
+  duration_ms: 1.154711
+  type: 'test'
+  ...
+# Subtest: backdrop dismissal only closes for clicks beginning and ending outside
+ok 4 - backdrop dismissal only closes for clicks beginning and ending outside
+  ---
+  duration_ms: 0.402837
+  type: 'test'
+  ...
+# Subtest: both palettes are wired, list overrides are independent, and service worker caches the module
+ok 5 - both palettes are wired, list overrides are independent, and service worker caches the module
+  ---
+  duration_ms: 0.909671
+  type: 'test'
+  ...
+# Subtest: attachment false avoids request, true 401 retains task and persistent diagnostics; next import fills missing attachment
+ok 6 - attachment false avoids request, true 401 retains task and persistent diagnostics; next import fills missing attachment
+  ---
+  duration_ms: 34.053203
+  type: 'test'
+  ...
+# Subtest: download failure isolates one file; metadata contentBytes fallback; repair missing local blob
+ok 7 - download failure isolates one file; metadata contentBytes fallback; repair missing local blob
+  ---
+  duration_ms: 9.090674
+  type: 'test'
+  ...
+# Subtest: attachment flag true but empty list is not successful; mismatched file length rejected
+ok 8 - attachment flag true but empty list is not successful; mismatched file length rejected
+  ---
+  duration_ms: 5.979884
+  type: 'test'
+  ...
+# Subtest: Graph 401 parses response code and request id without exposing bearer
+ok 9 - Graph 401 parses response code and request id without exposing bearer
+  ---
+  duration_ms: 0.917273
+  type: 'test'
+  ...
+# Subtest: optional expanded task fallback can enumerate attachments after list 401
+ok 10 - optional expanded task fallback can enumerate attachments after list 401
+  ---
+  duration_ms: 3.918857
+  type: 'test'
+  ...
+# Subtest: paperclip uses actual file or original source flag; no icon for unrelated and deleted files; pending syncs via task data
+ok 11 - paperclip uses actual file or original source flag; no icon for unrelated and deleted files; pending syncs via task data
+  ---
+  duration_ms: 6.736134
+  type: 'test'
+  ...
+# Subtest: Outlook bundle matches original title and timestamp, recovers missing file, is idempotent and preserves task edits
+ok 12 - Outlook bundle matches original title and timestamp, recovers missing file, is idempotent and preserves task edits
+  ---
+  duration_ms: 11.726476
+  type: 'test'
+  ...
+# Subtest: 401 on attachment list remains pending across device sync; retry with empty list does not falsely mark complete; successful retry restores file
+ok 13 - 401 on attachment list remains pending across device sync; retry with empty list does not falsely mark complete; successful retry restores file
+  ---
+  duration_ms: 41.439672
+  type: 'test'
+  ...
+# Subtest: Graph retry recognizes identical recovered Outlook file rather than creating a duplicate
+ok 14 - Graph retry recognizes identical recovered Outlook file rather than creating a duplicate
+  ---
+  duration_ms: 6.449717
+  type: 'test'
+  ...
+# Subtest: web row integrates SVG paperclip and pending marker
+ok 15 - web row integrates SVG paperclip and pending marker
+  ---
+  duration_ms: 1.99011
+  type: 'test'
+  ...
+# Subtest: publisher-owned Microsoft configuration, no user Client ID required
+ok 16 - publisher-owned Microsoft configuration, no user Client ID required
+  ---
+  duration_ms: 38.235066
+  type: 'test'
+  ...
+# Subtest: Microsoft login PKCE state check, cancellation, token exchange only with Microsoft
+ok 17 - Microsoft login PKCE state check, cancellation, token exchange only with Microsoft
+  ---
+  duration_ms: 5.846343
+  type: 'test'
+  ...
+# Subtest: smart lists, My Day date reset, completion and search
+ok 18 - smart lists, My Day date reset, completion and search
+  ---
+  duration_ms: 5.038175
+  type: 'test'
+  ...
+# Subtest: recurrence clamps month and resets steps, idempotent successor
+ok 19 - recurrence clamps month and resets steps, idempotent successor
+  ---
+  duration_ms: 0.713465
+  type: 'test'
+  ...
+# Subtest: list/group, cascade delete, CSV quoting and formula protection
+ok 20 - list/group, cascade delete, CSV quoting and formula protection
+  ---
+  duration_ms: 0.779685
+  type: 'test'
+  ...
+# Subtest: pending edits survive remote refresh
+ok 21 - pending edits survive remote refresh
+  ---
+  duration_ms: 0.82225
+  type: 'test'
+  ...
+# Subtest: Microsoft Graph date zone conversion and paging
+ok 22 - Microsoft Graph date zone conversion and paging
+  ---
+  duration_ms: 42.725124
+  type: 'test'
+  ...
+# Subtest: Graph import mock with completed history, checklist, attachments, raw metadata and repeat import
+ok 23 - Graph import mock with completed history, checklist, attachments, raw metadata and repeat import
+  ---
+  duration_ms: 18.392295
+  type: 'test'
+  ...
+# Subtest: attachment smart lists include completed tasks, distinguish partial recovery, and scope search
+ok 24 - attachment smart lists include completed tasks, distinguish partial recovery, and scope search
+  ---
+  duration_ms: 1.799823
+  type: 'test'
+  ...
+# Subtest: DOCX validation supports MIME or filename and CRC-checks all stored and deflated entries
+ok 25 - DOCX validation supports MIME or filename and CRC-checks all stored and deflated entries
+  ---
+  duration_ms: 13.965501
+  type: 'test'
+  ...
+# Subtest: DOCX rejects invalid CRC even when local and central metadata agree
+ok 26 - DOCX rejects invalid CRC even when local and central metadata agree
+  ---
+  duration_ms: 3.841301
+  type: 'test'
+  ...
+# Subtest: DOCX rejects truncated ZIP, HTML, and ZIP lacking a Word document part
+ok 27 - DOCX rejects truncated ZIP, HTML, and ZIP lacking a Word document part
+  ---
+  duration_ms: 3.265372
+  type: 'test'
+  ...
+# Subtest: image format detection supports MIME and file extension fallback
+ok 28 - image format detection supports MIME and file extension fallback
+  ---
+  duration_ms: 1.545179
+  type: 'test'
+  ...
+# Subtest: JPEG with complete markers and successful decoder is accepted with dimensions
+ok 29 - JPEG with complete markers and successful decoder is accepted with dimensions
+  ---
+  duration_ms: 2.818589
+  type: 'test'
+  ...
+# Subtest: truncated JPEG without EOI is rejected before decoder runs
+ok 30 - truncated JPEG without EOI is rejected before decoder runs
+  ---
+  duration_ms: 0.361205
+  type: 'test'
+  ...
+# Subtest: JPEG decoder failure is rejected even when boundary markers exist
+ok 31 - JPEG decoder failure is rejected even when boundary markers exist
+  ---
+  duration_ms: 0.332542
+  type: 'test'
+  ...
+# Subtest: invalid dimensions and oversized pixel counts are rejected
+ok 32 - invalid dimensions and oversized pixel counts are rejected
+  ---
+  duration_ms: 0.215725
+  type: 'test'
+  ...
+# Subtest: metadata mismatch completes only a single structurally validated image attachment
+ok 33 - metadata mismatch completes only a single structurally validated image attachment
+  ---
+  duration_ms: 0.794838
+  type: 'test'
+  ...
+# Subtest: HAR parses plain and base64 task pages only, dedupes, excludes auth and private body
+ok 34 - HAR parses plain and base64 task pages only, dedupes, excludes auth and private body
+  ---
+  duration_ms: 2.785889
+  type: 'test'
+  ...
+# Subtest: exact original ID only, preserves user edits, metadata does not create attachment records
+ok 35 - exact original ID only, preserves user edits, metadata does not create attachment records
+  ---
+  duration_ms: 3.408428
+  type: 'test'
+  ...
+# Subtest: batch restore validates size and type, persists original bytes, clears pending and dedupes
+ok 36 - batch restore validates size and type, persists original bytes, clears pending and dedupes
+  ---
+  duration_ms: 10.071622
+  type: 'test'
+  ...
+# Subtest: same name and size ambiguity requires explicit selection; one file cannot map to multiple tasks
+ok 37 - same name and size ambiguity requires explicit selection; one file cannot map to multiple tasks
+  ---
+  duration_ms: 0.990843
+  type: 'test'
+  ...
+# Subtest: partial recovery remains pending and duplicate file selections are rejected
+ok 38 - partial recovery remains pending and duplicate file selections are rejected
+  ---
+  duration_ms: 1.821546
+  type: 'test'
+  ...
+# Subtest: Outlook preview uses fixed official host and encoded IDs, rejects URL injection
+ok 39 - Outlook preview uses fixed official host and encoded IDs, rejects URL injection
+  ---
+  duration_ms: 0.355105
+  type: 'test'
+  ...
+# Subtest: real local HTTP server, static assets, persistent attachment and task after restart
+ok 40 - real local HTTP server, static assets, persistent attachment and task after restart
+  ---
+  duration_ms: 390.817854
+  type: 'test'
+  ...
+# Subtest: 100 tasks saved before subresource fetching; bounded concurrency and batched saves
+ok 41 - 100 tasks saved before subresource fetching; bounded concurrency and batched saves
+  ---
+  duration_ms: 147.528086
+  type: 'test'
+  ...
+# Subtest: attachment retry only processes pending task; optional beta endpoint reads missing file
+ok 42 - attachment retry only processes pending task; optional beta endpoint reads missing file
+  ---
+  duration_ms: 4.753154
+  type: 'test'
+  ...
+# Subtest: Retry-After honors seconds including zero, sorting is per list and opacity clamped
+ok 43 - Retry-After honors seconds including zero, sorting is per list and opacity clamped
+  ---
+  duration_ms: 0.362857
+  type: 'test'
+  ...
+# Subtest: Exchange Online authorization uses PKCE, offline_access, and no forced consent prompt
+ok 44 - Exchange Online authorization uses PKCE, offline_access, and no forced consent prompt
+  ---
+  duration_ms: 33.310493
+  type: 'test'
+  ...
+# Subtest: Graph authorization does not force account selection and requests offline_access
+ok 45 - Graph authorization does not force account selection and requests offline_access
+  ---
+  duration_ms: 1.801425
+  type: 'test'
+  ...
+# Subtest: expired cached Graph token silently refreshes and rotates the refresh token
+ok 46 - expired cached Graph token silently refreshes and rotates the refresh token
+  ---
+  duration_ms: 1.102702
+  type: 'test'
+  ...
+# Subtest: Graph task mapping finds the original folder using Tasks.Read only
+ok 47 - Graph task mapping finds the original folder using Tasks.Read only
+  ---
+  duration_ms: 1.801916
+  type: 'test'
+  ...
+# Subtest: Graph task mapping refuses a local task without original Microsoft ID
+ok 48 - Graph task mapping refuses a local task without original Microsoft ID
+  ---
+  duration_ms: 1.31354
+  type: 'test'
+  ...
+# Subtest: local source folder allows direct Outlook authorization without Graph lookup
+ok 49 - local source folder allows direct Outlook authorization without Graph lookup
+  ---
+  duration_ms: 0.286692
+  type: 'test'
+  ...
+# Subtest: expired Outlook token silently refreshes against the Exchange resource, not Graph
+ok 50 - expired Outlook token silently refreshes against the Exchange resource, not Graph
+  ---
+  duration_ms: 1.692682
+  type: 'test'
+  ...
+# Subtest: Outlook batch recovers every missing attachment across pending tasks and skips existing files
+ok 51 - Outlook batch recovers every missing attachment across pending tasks and skips existing files
+  ---
+  duration_ms: 3.413195
+  type: 'test'
+  ...
+# Subtest: Outlook batch continues after one attachment fails and keeps the task pending
+ok 52 - Outlook batch continues after one attachment fails and keeps the task pending
+  ---
+  duration_ms: 1.006157
+  type: 'test'
+  ...
+# Subtest: Outlook batch marks tasks with missing source IDs pending and enforces a per-run task cap
+ok 53 - Outlook batch marks tasks with missing source IDs pending and enforces a per-run task cap
+  ---
+  duration_ms: 0.409397
+  type: 'test'
+  ...
+# Subtest: Microsoft To Do settings exposes exactly the two requested migration actions
+ok 54 - Microsoft To Do settings exposes exactly the two requested migration actions
+  ---
+  duration_ms: 6.860502
+  type: 'test'
+  ...
+# Subtest: index scans each distinct folder once, matches exact IDs and finds a task in a different folder
+ok 55 - index scans each distinct folder once, matches exact IDs and finds a task in a different folder
+  ---
+  duration_ms: 0.963893
+  type: 'test'
+  ...
+# Subtest: batch report retains successful task IDs and attachment names for direct navigation
+ok 56 - batch report retains successful task IDs and attachment names for direct navigation
+  ---
+  duration_ms: 0.434756
+  type: 'test'
+  ...
+# Subtest: attachment navigation and report include dedicated ready/pending views and open completed groups
+ok 57 - attachment navigation and report include dedicated ready/pending views and open completed groups
+  ---
+  duration_ms: 2.948846
+  type: 'test'
+  ...
+# Subtest: local Outlook probe fetches Substrate metadata then the original file, without persisting token
+ok 58 - local Outlook probe fetches Substrate metadata then the original file, without persisting token
+  ---
+  duration_ms: 26.497403
+  type: 'test'
+  ...
+# Subtest: local probe rejects non-loopback origins and malformed identifiers
+ok 59 - local probe rejects non-loopback origins and malformed identifiers
+  ---
+  duration_ms: 1.028751
+  type: 'test'
+  ...
+# Subtest: Substrate 401 is reported as a stage-specific error and never exposes the bearer token
+ok 60 - Substrate 401 is reported as a stage-specific error and never exposes the bearer token
+  ---
+  duration_ms: 1.793654
+  type: 'test'
+  ...
+# Subtest: probe stops before download when task has no linked file attachment
+ok 61 - probe stops before download when task has no linked file attachment
+  ---
+  duration_ms: 1.116493
+  type: 'test'
+  ...
+# Subtest: probe retries the original Graph folder ID form if the Base64 folder path form is rejected
+ok 62 - probe retries the original Graph folder ID form if the Base64 folder path form is rejected
+  ---
+  duration_ms: 1.453791
+  type: 'test'
+  ...
+# Subtest: probe follows same-folder NextLink and refuses external download links
+ok 63 - probe follows same-folder NextLink and refuses external download links
+  ---
+  duration_ms: 0.93519
+  type: 'test'
+  ...
+# Subtest: probe refuses redirect with bearer and stops on foreign pagination
+ok 64 - probe refuses redirect with bearer and stops on foreign pagination
+  ---
+  duration_ms: 1.309875
+  type: 'test'
+  ...
+# Subtest: Preview.Size mismatch is a warning when the HTTP body matches Content-Length
+ok 65 - Preview.Size mismatch is a warning when the HTTP body matches Content-Length
+  ---
+  duration_ms: 2.640891
+  type: 'test'
+  ...
+# Subtest: missing Preview.Size does not block a complete attachment response
+ok 66 - missing Preview.Size does not block a complete attachment response
+  ---
+  duration_ms: 1.284396
+  type: 'test'
+  ...
+# Subtest: HTML and JSON error pages are not accepted as attachments
+ok 67 - HTML and JSON error pages are not accepted as attachments
+  ---
+  duration_ms: 1.428694
+  type: 'test'
+  ...
+# Subtest: failed response-body read is reported as transport truncation
+ok 68 - failed response-body read is reported as transport truncation
+  ---
+  duration_ms: 0.914248
+  type: 'test'
+  ...
+# Subtest: Content-Length mismatch still rejects a truncated HTTP response
+ok 69 - Content-Length mismatch still rejects a truncated HTTP response
+  ---
+  duration_ms: 1.906003
+  type: 'test'
+  ...
+# Subtest: metadata-only mode returns every attachment without downloading file bytes
+ok 70 - metadata-only mode returns every attachment without downloading file bytes
+  ---
+  duration_ms: 0.72977
+  type: 'test'
+  ...
+# Subtest: attachmentId selects the requested second file instead of always returning the first
+ok 71 - attachmentId selects the requested second file instead of always returning the first
+  ---
+  duration_ms: 0.870082
+  type: 'test'
+  ...
+# Subtest: attachment selector rejects unknown IDs and out-of-range indexes
+ok 72 - attachment selector rejects unknown IDs and out-of-range indexes
+  ---
+  duration_ms: 0.792104
+  type: 'test'
+  ...
+# Subtest: manifest index follows initial DeltaLink then historical NextLink pages and stops at terminal checkpoint
+ok 73 - manifest index follows initial DeltaLink then historical NextLink pages and stops at terminal checkpoint
+  ---
+  duration_ms: 1.077374
+  type: 'test'
+  ...
+# Subtest: indexed download avoids a second folder scan, validates same origin and exact IDs
+ok 74 - indexed download avoids a second folder scan, validates same origin and exact IDs
+  ---
+  duration_ms: 1.434012
+  type: 'test'
+  ...
+# Subtest: arbitrary named files, explicit HTML/JSON attachments and empty files return unchanged raw bytes
+ok 75 - arbitrary named files, explicit HTML/JSON attachments and empty files return unchanged raw bytes
+  ---
+  duration_ms: 4.068212
+  type: 'test'
+  ...
+# Subtest: partial HTTP 206 and ambiguous empty responses are not accepted as complete files
+ok 76 - partial HTTP 206 and ambiguous empty responses are not accepted as complete files
+  ---
+  duration_ms: 1.044375
+  type: 'test'
+  ...
+# Subtest: pane preferences validate corrupt storage and clamp bounds
+ok 77 - pane preferences validate corrupt storage and clamp bounds
+  ---
+  duration_ms: 1.57898
+  type: 'test'
+  ...
+# Subtest: desktop panes retain requested widths when space permits
+ok 78 - desktop panes retain requested widths when space permits
+  ---
+  duration_ms: 0.370298
+  type: 'test'
+  ...
+# Subtest: pane resizing reserves center width at narrow desktop sizes
+ok 79 - pane resizing reserves center width at narrow desktop sizes
+  ---
+  duration_ms: 0.362036
+  type: 'test'
+  ...
+# Subtest: drag bounds depend on opposite visible pane and viewport
+ok 80 - drag bounds depend on opposite visible pane and viewport
+  ---
+  duration_ms: 0.217838
+  type: 'test'
+  ...
+# Subtest: hidden and mobile panes do not consume splitter space
+ok 81 - hidden and mobile panes do not consume splitter space
+  ---
+  duration_ms: 0.558843
+  type: 'test'
+  ...
+# Subtest: all extensions and unknown MIME use the same raw bytes policy, including zero-byte files
+ok 82 - all extensions and unknown MIME use the same raw bytes policy, including zero-byte files
+  ---
+  duration_ms: 1.346921
+  type: 'test'
+  ...
+# Subtest: transport byte mismatch rejects even if metadata matches; encoded responses compare decoded byte count only
+ok 83 - transport byte mismatch rejects even if metadata matches; encoded responses compare decoded byte count only
+  ---
+  duration_ms: 1.955167
+  type: 'test'
+  ...
+# Subtest: batch saves unchanged bytes despite unknown format or size metadata differences; failures stay pending
+ok 84 - batch saves unchanged bytes despite unknown format or size metadata differences; failures stay pending
+  ---
+  duration_ms: 1.825342
+  type: 'test'
+  ...
+# Subtest: production Outlook paths no longer call format-specific validators or enforce Preview.Size
+ok 85 - production Outlook paths no longer call format-specific validators or enforce Preview.Size
+  ---
+  duration_ms: 6.755684
+  type: 'test'
+  ...
+# (node:9238) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: server auth, user isolation, invalid payload
+ok 86 - server auth, user isolation, invalid payload
+  ---
+  duration_ms: 17.790798
+  type: 'test'
+  ...
+# Subtest: two offline devices merge different fields; retry idempotence; deletion wins
+ok 87 - two offline devices merge different fields; retry idempotence; deletion wins
+  ---
+  duration_ms: 27.774738
+  type: 'test'
+  ...
+# Subtest: delta pagination and retry retains pending queue
+ok 88 - delta pagination and retry retains pending queue
+  ---
+  duration_ms: 43.895399
+  type: 'test'
+  ...
+# Subtest: attachment data round trip and isolation
+ok 89 - attachment data round trip and isolation
+  ---
+  duration_ms: 3.138901
+  type: 'test'
+  ...
+# Subtest: custom list appearance and image sync across two devices
+ok 90 - custom list appearance and image sync across two devices
+  ---
+  duration_ms: 5.277395
+  type: 'test'
+  ...
+# Subtest: attachment migration status survives actual worker push/pull and completion clears stale local status
+ok 91 - attachment migration status survives actual worker push/pull and completion clears stale local status
+  ---
+  duration_ms: 4.366412
+  type: 'test'
+  ...
+# Subtest: task source list mapping can be synchronized without rejecting task payload
+ok 92 - task source list mapping can be synchronized without rejecting task payload
+  ---
+  duration_ms: 2.112404
+  type: 'test'
+  ...
+# Subtest: settings dialogs have grouped cards, sticky actions and responsive single-column layout
+ok 93 - settings dialogs have grouped cards, sticky actions and responsive single-column layout
+  ---
+  duration_ms: 1.943901
+  type: 'test'
+  ...
+# Subtest: shared native UI uses the same named Monet palette and attachment views as Web (source check)
+ok 94 - shared native UI uses the same named Monet palette and attachment views as Web (source check)
+  ---
+  duration_ms: 0.472102
+  type: 'test'
+  ...
+# Subtest: desktop scopes are distinct and shared native recovery reuses authenticated raw Worker protocol (source check)
+ok 95 - desktop scopes are distinct and shared native recovery reuses authenticated raw Worker protocol (source check)
+  ---
+  duration_ms: 0.663591
+  type: 'test'
+  ...
+# (node:9260) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: web asset preflight explicitly identifies missing and empty resize modules
+ok 96 - web asset preflight explicitly identifies missing and empty resize modules
+  ---
+  duration_ms: 15.353273
+  type: 'test'
+  ...
+# Subtest: complete source includes every service worker asset and application entry module
+ok 97 - complete source includes every service worker asset and application entry module
+  ---
+  duration_ms: 5.173549
+  type: 'test'
+  ...
+# (node:9271) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: static assets resolve on Windows and POSIX; reject directory traversal
+ok 98 - static assets resolve on Windows and POSIX; reject directory traversal
+  ---
+  duration_ms: 1.096202
+  type: 'test'
+  ...
+1..98
+# tests 98
+# suites 0
+# pass 98
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 785.561029

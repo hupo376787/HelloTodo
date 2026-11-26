@@ -1,0 +1,13 @@
+import {all,get,edit,pendingAttachments} from './core.mjs';
+const MAX=25*1024*1024;
+const original=t=>({taskId:t.id,title:String(t.data.raw?.title??t.data.title??''),createdAt:t.data.raw?.createdDateTime??t.data.createdAt??null});
+export function recoveryManifest(state){return {format:'hellotodo-outlook-request-v1',tasks:pendingAttachments(state).map(original)};}
+export function previewRecovery(state,bundle){
+ if(bundle?.format!=='hellotodo-outlook-attachments-v1'||!Array.isArray(bundle.tasks))throw Error('不是 HelloTodo Outlook 附件恢复包');
+ const out=[],seen=new Set();for(const row of bundle.tasks){if(!row||seen.has(row.taskId)||!Array.isArray(row.files)||!row.files.length)continue;const t=get(state,'task',row.taskId);if(!t||!t.data.source)continue;const o=original(t);if(o.title!==row.title||!o.createdAt||o.createdAt!==row.createdAt)continue;seen.add(row.taskId);out.push({taskId:t.id,title:t.data.title,files:row.files});}return out;
+}
+const hex=async data=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',data))].map(v=>v.toString(16).padStart(2,'0')).join('');
+export async function importRecovery(state,bundle,{storeFile,loadFile,save}){
+ const result={saved:0,skipped:0,errors:[]};const rows=previewRecovery(state,bundle);if(!rows.length)throw Error('没有可安全关联的任务');
+ for(const row of rows){for(const f of row.files){try{if(!f||typeof f.name!=='string'||!f.name||f.name.length>512||!Number.isSafeInteger(f.size)||f.size<0||f.size>MAX||typeof f.contentBytes!=='string'||f.contentBytes.length>Math.ceil(MAX/3)*4)throw Error('文件格式或大小无效');const bytes=Uint8Array.from(atob(f.contentBytes),c=>c.charCodeAt(0));if(bytes.length!==f.size)throw Error('附件大小不匹配');const digest=await hex(bytes);if(typeof f.sha256==='string'&&digest!==f.sha256.toLowerCase())throw Error('附件 SHA-256 校验失败');const blob=new Blob([bytes],{type:typeof f.type==='string'?f.type:'application/octet-stream'});const aid='outlook-'+await hex(new TextEncoder().encode(row.taskId+'\n'+f.name+'\n'+digest));const existing=state.records['attachment:'+aid];if(existing?.deleted){result.skipped++;continue;}let duplicate=false;for(const a of all(state,'attachment').filter(a=>a.data.taskId===row.taskId&&a.data.name===f.name&&a.data.size===f.size)){const b=await loadFile(a.id);if(b&&await hex(await b.arrayBuffer())===digest){duplicate=true;break;}}if(duplicate){result.skipped++;continue;}await storeFile(aid,blob);edit(state,'attachment',aid,{taskId:row.taskId,name:f.name,type:blob.type,size:blob.size,raw:{recovery:'outlook',sha256:digest}});result.saved++;}catch(e){result.errors.push(row.title+' / '+(f?.name||'附件')+': '+e.message);}}await save();}return result;
+}

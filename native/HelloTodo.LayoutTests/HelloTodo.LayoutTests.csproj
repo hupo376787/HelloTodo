@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(NativeLayoutTests)' == 'true'">
+    <DefineConstants>$(DefineConstants);NATIVE_LAYOUT_TESTS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../HelloTodo/HelloTodo.csproj" />
+    <PackageReference Include="Avalonia.Headless" Version="11.2.3" Condition="'$(NativeLayoutTests)' != 'true'" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.2.3" />
+  </ItemGroup>
+</Project>

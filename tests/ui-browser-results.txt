@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "/mnt/data/hellotodo-ui-speed/tests/browser.py", line 15, in <module>
+    a=browser.new_context(viewport={'width':1280,'height':800},accept_downloads=True);page=a.new_page();errors=[];page.on('pageerror',lambda e: errors.append(str(e)));page.on('dialog',lambda d:d.accept());page.goto('http://127.0.0.1:8787');page.get_by_text('新建清单',exact=False).wait_for();page.locator('#newTask').fill('测试任务');page.locator('#newTask').press('Enter');page.get_by_role('button',name='测试任务',exact=True).click();page.get_by_placeholder('＋ 添加步骤').fill('检查数据');page.get_by_placeholder('＋ 添加步骤').press('Enter');page.get_by_role('checkbox',name='完成步骤 检查数据').check();page.get_by_placeholder('添加备注').fill('备注内容');page.get_by_placeholder('添加备注').press('Tab');page.get_by_label('截止日期',exact=True).fill('2027-03-01');page.get_by_label('截止日期',exact=True).press('Tab');page.locator('#detail').get_by_label('切换重要').click();page.locator('#detail').get_by_label('返回任务列表').click();page.locator('#sidebar .navrow').nth(1).click();assert page.get_by_role('button',name='测试任务',exact=True).is_visible();page.get_by_text('新建清单',exact=False).click();page.get_by_placeholder('清单名称').fill('工作');page.get_by_role('button',name='保存',exact=True).click();page.locator('#newTask').fill('清单任务');page.locator('#newTask').press('Enter');page.reload();page.get_by_role('button',name='工作',exact=False).click();assert page.get_by_role('button',name='清单任务',exact=True).is_visible();page.locator('#settings').click();page.get_by_placeholder('工作区密钥').fill(key);page.get_by_role('button',name='连接工作区').click();page.wait_for_function("document.querySelector('#status').textContent.includes('已同步')",timeout=15000);
+                                                                                                                                                                                                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pyvenv/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 9050, in goto
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.goto(
+        ^^^^^^^^^^^^^^^^^^^^
+            url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_page.py", line 552, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:8787/
+Call log:
+  - navigating to "http://127.0.0.1:8787/", waiting until "load"
+

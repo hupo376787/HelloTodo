@@ -1,0 +1,1 @@
+Browser E2E attempted: Chromium navigation blocked by environment policy (ERR_BLOCKED_BY_ADMINISTRATOR at http://localhost:18787/). No browser interaction assertions executed.

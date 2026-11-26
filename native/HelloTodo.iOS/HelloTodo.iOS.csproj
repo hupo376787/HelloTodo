@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><TargetFramework>net10.0-ios26.5</TargetFramework><OutputType>Exe</OutputType><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion></PropertyGroup>
+ <ItemGroup><ProjectReference Include="../HelloTodo/HelloTodo.csproj"/><PackageReference Include="Avalonia.iOS" Version="11.2.3"/></ItemGroup>
+ <ItemGroup><BundleResource Include="Resources/*.png" /></ItemGroup>
+</Project>
